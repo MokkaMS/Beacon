@@ -33,7 +33,7 @@ This guide walks you through deploying and updating the bot on your Proxmox home
 
 ## 4. Deploy on Proxmox
 ```bash
-git clone <your-repo-url> homelab-bot
+git clone https://github.com/MokkaMS/Beacon homelab-bot
 cd homelab-bot
 cp .env.example .env
 nano .env   # Fill in DISCORD_*, BOT_OWNER_IDS, PUBLIC_URL, DISCORD_REDIRECT_URI, SESSION_SECRET, CLOUDFLARE_TUNNEL_TOKEN
