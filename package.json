@@ -1,0 +1,19 @@
+{
+  "name": "modular-homelab-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modular Discord Bot with Admin Web-Page and 24/7 Minecraft Monitoring for Proxmox Homelab",
+  "workspaces": [
+    "apps/bot",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/bot",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "build": "npm run build --workspace=apps/web && npm run build --workspace=apps/bot",
+    "start": "npm run start --workspace=apps/bot",
+    "test": "npm run test --workspace=apps/bot",
+    "typecheck": "npm run typecheck --workspace=apps/bot && npm run typecheck --workspace=apps/web",
+    "create-module": "node scripts/create-module.mjs"
+  }
+}

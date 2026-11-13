@@ -1,0 +1,36 @@
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: beacon-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - DATABASE_PATH=/app/data/bot.db
+    volumes:
+      - ./data:/app/data
+    ports:
+      # Optional local LAN access; Cloudflare Tunnel reaches bot:3000 internally without open firewall ports
+      - "127.0.0.1:3000:3000"
+    networks:
+      - bot_net
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: beacon-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      bot:
+        condition: service_healthy
+    networks:
+      - bot_net
+
+networks:
+  bot_net:
+    driver: bridge

@@ -1,0 +1,16 @@
+Core-Principle:
+- full modularity for future module additions
+- easily deployable and updatable on my proxmox homelab
+
+Admin Web-Page:
+- accessible in the entire world
+- discord user permission management
+- Server Management
+- other useful Features
+
+Minecraft:
+- 24/7 Monitoring of set minecraft Servers
+- history of monitored Players and Servers
+- other cool and useful Features
+
+More Modules planned… (Do you have something in mind?)
